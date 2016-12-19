@@ -27,6 +27,17 @@ public class lesson1912 {
                 }
         return cars;
     }
+    public static Car[] sortByLength(Car[] cars) {
+        for (int i = 0; i < cars.length; i++)
+            for (int j = 0; j < cars.length - 1; j++)
+                if (cars[j].length > cars[j + 1].length) {
+                    Car temp = cars[j];
+                    cars[j] = cars[j + 1];
+                    cars[j + 1] = temp;
+
+                }
+        return cars;
+    }
 
     public static void main(String[] args) {
         Car c1 = new Car();
@@ -55,5 +66,14 @@ public class lesson1912 {
 
         for (int i = 0; i < garage.length; i++)
             showCar(i + 1, garage[i]);
+
+        garage = sortByPrice (garage);
+        for (int i = 0; i < garage.length; i++)
+            showCar (i + 1, garage [i]);
+
+        garage = sortByLength (garage);
+        for (int i = 0; i < garage.length; i++)
+            showCar (i + 1, garage [i]);
+
     }
 }
