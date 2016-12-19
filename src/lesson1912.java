@@ -1,5 +1,5 @@
 import com.sun.org.apache.xpath.internal.SourceTree;
-
+// http://java-course.ru/begin/oop/
 public class lesson1912 {
     public static class Car {
         public String color;
