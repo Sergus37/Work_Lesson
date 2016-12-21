@@ -2,22 +2,22 @@
 public class lesson2112 {
 
     public static class OurGroupStudent {
-       static int number; // общее, характерное для всех объектов этого класса
+        static int number; // общее, характерное для всех объектов этого класса
         int age;
         String fio;
 
     }
 
-    public static void main(String[] args) {
-        OurGroupStudent s1  = new OurGroupStudent();
+    public static void main3(String[] args) {
+        OurGroupStudent s1 = new OurGroupStudent();
         s1.fio = "A";
         s1.age = 1;
         s1.number = 1122;
-        OurGroupStudent s2  = new OurGroupStudent();
+        OurGroupStudent s2 = new OurGroupStudent();
         s2.fio = "B";
         s2.age = 2;
         s2.number = 1122;
-        OurGroupStudent s3  = new OurGroupStudent();
+        OurGroupStudent s3 = new OurGroupStudent();
         s3.fio = "D";
         s3.age = 3;
         s3.number = 1122;
@@ -80,14 +80,15 @@ public class lesson2112 {
         public int currentCapacity;
 
     }
-    public  static class Touch {
+
+    public static class Touch {
         public static String Manufacture;
     }
 
     public static class Display {
         public double d;
         public MatrixType matrix;
-        public  Touch touch;
+        public Touch touch;
     }
 
     public static class Phone {
@@ -96,14 +97,34 @@ public class lesson2112 {
         public int RAM;
         public Display display;
 
+        public boolean batteryCharge() {
+            battery.currentCapacity += 50;
+            System.out.println(battery.currentCapacity); //"battery level +"
+            if (battery.currentCapacity >= battery.maxCapacity) {
+                System.out.println("Батарея заряжена");
+                battery.currentCapacity = battery.maxCapacity;
+                return false;
+            }
+
+            return true;
+        }
+
+        public int checkBattery() {
+            int p = 100 * battery.currentCapacity / battery.maxCapacity;
+            if (p < 15)
+                System.out.println("Маленький процент заряда !!!");
+            return p;
+        }
+
     }
 
-    public static void main2(String[] args) {
+
+    public static void main(String[] args) {
         Phone myPhone = new Phone();
         myPhone.color = Color.WHITE;
         myPhone.battery = new Battery();
         myPhone.battery.maxCapacity = 4000;
-        myPhone.battery.currentCapacity = 2500;
+        myPhone.battery.currentCapacity = 500;
         myPhone.display = new Display();
         myPhone.display.d = 5;
         myPhone.display.matrix = MatrixType.AMOLED;
@@ -111,7 +132,14 @@ public class lesson2112 {
         myPhone.display.touch.Manufacture = "???";
         myPhone.RAM = 3036;
 
+        /*for (int i = 0; i < 100; i++) {
+            System.out.println(myPhone.checkBattery());
+            myPhone.batteryCharge();
+        } */
 
+        while (myPhone.batteryCharge()) {
+            System.out.println(myPhone.checkBattery());
 
+        }
     }
 }
